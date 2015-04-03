@@ -26,5 +26,11 @@ public class SpaceShip extends Sprite{
 		if(x > 400 - width)
 			x = 400 - width;
 	}
-
+	public void moveup(int direction){
++		y += (step*direction);
++		if(y < 60)
++			y = 2 * height;
++		if(y > 600 - height)
++			y = 600 - height;
++	}
 }
