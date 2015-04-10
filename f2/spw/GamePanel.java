@@ -31,6 +31,27 @@ public class GamePanel extends JPanel {
 		
 		repaint();
 	}
+	
+	public void end(){
+		big.clearRect(0, 0, 400, 600);
+		
+		big.setColor(Color.GREEN);	
+		big.drawString(String.format("END"),300,20);
+		for(Sprite s : sprites){
+			s.draw(big);
+		}
+		
+		repaint();
+	}
+	
+	public void bloodSpaceShip(){
+		
+		big.setColor(Color.RED);
+		big.fillRect( 2, 0, 380, 10 );
+		for(Sprite s : sprites){
+			s.draw(big);
+		}
+	}
 
 	@Override
 	public void paint(Graphics g) {
