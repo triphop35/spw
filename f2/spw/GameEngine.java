@@ -17,6 +17,7 @@ public class GameEngine implements KeyListener, GameReporter{
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 	private ArrayList<Enemy2> enemies2 = new ArrayList<Enemy2>();
 	private ArrayList<Bullet> bullet = new ArrayList<Bullet>();
+	private ArrayList<Heal> heal = new ArrayList<Heal>();
 	private SpaceShip v;	
 	
 	private Timer timer;
@@ -41,6 +42,7 @@ public class GameEngine implements KeyListener, GameReporter{
 				process();
 				process2();
 				process3();
+				processHeal();
 			}
 		});
 		timer.setRepeats(true);
@@ -57,6 +59,12 @@ public class GameEngine implements KeyListener, GameReporter{
 		enemies.add(e);
 	}
 	
+	 private void generateHeal(){
+ 		Heal h = new Heal((int)(Math.random()*390), 30);
+ 		gp.sprites.add(h);
+ 		heal.add(h);
+ 	}
+ 	
 	private void process(){
 		if(Math.random() < difficulty){
 			generateEnemy();
