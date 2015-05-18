@@ -4,15 +4,16 @@ import java.awt.Graphics2D;
 import java.awt.Toolkit;
 import java.awt.Image;
 
-public class Heal extends Sprite{
+public class Boss extends Sprite{
 	public static final int Y_TO_FADE = 400;
 	public static final int Y_TO_DIE = 600;
 	
-	private int step = 1;
+	private int step = 12;
 	private boolean alive = true;
+	private int bossHp = 3;
 	
-	public Heal(int x, int y) {
-		super(x, y, 20, 20);
+	public Boss(int x, int y) {
+		super(x, y, 50, 50);
 		
 	}
 
@@ -24,9 +25,7 @@ public class Heal extends Sprite{
 			g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 
 					(float)(Y_TO_DIE - y)/(Y_TO_DIE - Y_TO_FADE)));
 		}
-		//g.setColor(Color.GREEN);
-		//g.fillRect(x, y, width, height);
-		Image img = Toolkit.getDefaultToolkit().getImage("Heal_Icon.png");
+		Image img = Toolkit.getDefaultToolkit().getImage("boss.png");
 		g.drawImage(img, x, y, width, height, null);
 		
 	}
@@ -44,5 +43,13 @@ public class Heal extends Sprite{
 
 	public void die(){
 		alive = false;	
+	}
+
+	public void painHP(){
+		bossHp--;
+	}
+   	
+	public int getHP(){
+		return bossHp;
 	}
 }

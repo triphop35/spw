@@ -1,5 +1,3 @@
-package f2.spw;
-
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -21,8 +19,8 @@ public class GamePanel extends JPanel {
 		imgBackground = Toolkit.getDefaultToolkit().getImage("bg.jpg");
 		bi = new BufferedImage(400, 600, BufferedImage.TYPE_INT_ARGB);
 		big = (Graphics2D) bi.getGraphics();
-		//big.setBackground(Color.BLACK);
 		big.drawImage(imgBackground, 0, 0, 400, 600,null);
+		//big.setBackground(Color.BLACK);
 	}
 
 	public void updateGameUI(GameReporter reporter){
@@ -36,7 +34,7 @@ public class GamePanel extends JPanel {
 		
 		repaint();
 	}
-	
+
 	public void end(){
 		big.clearRect(0, 0, 400, 600);
 		
@@ -49,13 +47,10 @@ public class GamePanel extends JPanel {
 		repaint();
 	}
 	
-	public void bloodSpaceShip(){
+	public void bloodSpaceShip(GameReporter reporter){
 		
 		big.setColor(Color.RED);
-		big.fillRect( 2, 0, 380, 10 );
-		for(Sprite s : sprites){
-			s.draw(big);
-		}
+		big.fillRect( 0, 0, 38*(reporter.getNum()/10), 10 );
 	}
 
 	@Override
